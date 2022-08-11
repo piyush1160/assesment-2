@@ -1,42 +1,33 @@
 let blogs=[];
 
-
 function updateBlogs(newBlogs){
 
     let blogs=newBlogs;
             let output = ''
 
-            newBlogs?.forEach((blog)=>{
+
+
+          for (let index = 0; index < newBlogs.length/6-1; index++) {
+	        const blog = newBlogs[index];
+	  // newBlogs?.forEach((blog)=>{
+
 const {  
     userId
    ,id,
    title,
    body}=blog||{};
                 output += `
-
-
-
-
-
-                 <div style="width: 22%; margin: 0.5em; display:inline-block">
-
-                   
-                    <p > ${JSON.stringify(title)}<br>
-                  &emsp;&emsp;&emsp; By : &nbsp; ${JSON.stringify(userId)}</p>
-                    <p>${JSON.stringify(body)}</p>
-
-<hr>
-                  
-         
                 
+                <div style="width: 22%; margin: 1em; display:inline-block;border:2px  white;" >
+                    <p > ${JSON.stringify(title)}<br>
+                  &emsp;&emsp;&emsp; By : &nbsp; ${JSON.stringify(userId)}</p><hr>
+                    <p>${JSON.stringify(body)}<hr></p>
+                   
                 </div>
-            `
-
-            })
+                 `
+            }
 
             document.querySelector('#post').innerHTML = output;
-
-
 }
 
 function fetchData(){
@@ -49,7 +40,7 @@ function fetchData(){
 
     xhr.onreadystatechange = () => {
         if(xhr.status === 200 && xhr.readyState === 4) {
-            debugger;
+            
             const response = JSON.parse(xhr.responseText)
            updateBlogs(response)
         }
@@ -60,4 +51,6 @@ function fetchData(){
 
 
 fetchData();
+
+
 
