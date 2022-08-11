@@ -13,30 +13,33 @@ const {
    title,
    body}=blog||{};
                 output += `
-                <div style="width: 22%; margin: 0.5em;">
-                   <p>
+
+
+
+
+
+                 <div style="width: 22%; margin: 0.5em; display:inline-block">
+
+                   
+                    <p > ${JSON.stringify(title)}<br>
+                  &emsp;&emsp;&emsp; By : &nbsp; ${JSON.stringify(userId)}</p>
+                    <p>${JSON.stringify(body)}</p>
+
+<hr>
+                  
+         
                 
-          ${       /*    <a href="https://www.youtube.com/watch?v=${blog.id}" target="_blank" >
-                        <img style="width: 100%;" src=${response.items[i].snippet.thumbnails.high.url} />
-                    </a>
-                    <h5>${response.items[i].snippet.title}</h5>
-                    <p style="color: gray;">${response.items[i].snippet.description}</p> */
-             JSON.stringify({id,userId,title,body})
-            
-             
-                }
-                </p>
                 </div>
             `
 
             })
 
-            document.querySelector('#videos').innerHTML = output;
+            document.querySelector('#post').innerHTML = output;
 
 
 }
 
-document.querySelector('#button').addEventListener('click', () => { 
+function fetchData(){
 
     // API call
     const xhr = new XMLHttpRequest()   
@@ -53,9 +56,8 @@ document.querySelector('#button').addEventListener('click', () => {
     }
 
     xhr.send()
-})
+}
 
 
-
-
+fetchData();
 
